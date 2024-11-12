@@ -76,7 +76,7 @@ class SignUp extends StatelessWidget {
                             SnackBar(content: Text('failed to signup')),
                           );
 
-                        }
+                        }//
                         else  {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => login()),
                           );

@@ -55,21 +55,18 @@ class login extends StatelessWidget {
               Consumer<provider>(builder: (context, value, child) {
                 return ElevatedButton(onPressed: ()async{
                   await  value.postLogin(password.text, Email.text);
-                  if (!value.userModel!.state) {
+                  if (!value.userModel.state) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => home()),
 
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('failed to signup')),
                     );
-                      if(value==null){
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('failed to signup')),
-                        );
-                      }
+
                   }
 
 
                   else {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => home()),
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('failed to signup')),
                     );
                   }
                 }, child: Text("Login"));

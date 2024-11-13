@@ -54,13 +54,21 @@ class login extends StatelessWidget {
               SizedBox(height: 20,),
               Consumer<provider>(builder: (context, value, child) {
                 return ElevatedButton(onPressed: ()async{
-                  if (value.userModel == null) {
                   await  value.postLogin(password.text, Email.text);
+                  if (!value.userModel!.state) {
+
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('failed to signup')),
                     );
+                      if(value==null){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('failed to signup')),
+                        );
+                      }
+                  }
 
-                  } else {
+
+                  else {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => home()),
                     );
                   }

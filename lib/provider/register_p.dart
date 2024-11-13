@@ -6,19 +6,21 @@ class provider extends ChangeNotifier {
   user? userModel;
 
   Future<void> postsignup( String name,String password,String phone,String email) async {
-    await  srevice_r.postSignup(
+   userModel= await  srevice_r.postSignup(
        name: name,
        password: password,
        phone: phone,
        email: email
    );
+    notifyListeners();
   }
   Future<void> postLogin( String password,String email) async {
 
-    await  srevice_r.postLOGIN(
+   await  srevice_r.postLOGIN(
         password: password,
         email: email
     );
+    notifyListeners();
   }
 
 }

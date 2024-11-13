@@ -5,18 +5,21 @@ import '../Model_p/Model_p.dart';
 class  srevice_r{
  static Dio dio = Dio();
  //login get
- static Future<void> postLOGIN({required String password,required String email}) async {
-  await dio.post(
+ static Future<user> postLOGIN({required String password,required String email}) async {
+ Response response= await dio.post(
       'https://student.valuxapps.com/api/login',
       data: {
       "password": password,
       "email": email
       }
   );
+ print(response.data);
+ return user.fromjson(response.data);
+
  }
  //post signup
- static Future<void> postSignup({required String name,required String password,required String phone,required String email}) async {
- await dio.post(
+ static Future<user> postSignup({required String name,required String password,required String phone,required String email}) async {
+   Response response= await dio.post(
   'https://student.valuxapps.com/api/register',
      data: {
     'name': name,
@@ -24,5 +27,8 @@ class  srevice_r{
     'phone':  phone,
     'email' : email}
  );
+   print(response.data);
+   return user.fromjson(response.data);
  }
+
 }
